@@ -12,8 +12,7 @@ void main() {
     var desiredFps = 60.0;
     var testSeconds = 10;
 
-    var duration =
-        Duration(microseconds: ((1.0 / desiredFps) * 1000000).truncate());
+    var duration = Duration(microseconds: (1000000.0 / desiredFps).truncate());
     var called = 0;
     var start = DateTime.now();
     tester.printToConsole(
@@ -28,7 +27,7 @@ void main() {
     clock.cancel();
     var end = DateTime.now();
     var actualFps =
-        called.toDouble() / (end.difference(start).inMicroseconds / 1000000);
+        called.toDouble() / (end.difference(start).inMicroseconds / 1000000.0);
     tester.printToConsole(
         "END:   ${end.toString()} called:$called difference:${end.difference(start)} actualFps:$actualFps");
   });
